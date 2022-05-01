@@ -23,3 +23,8 @@ def add_beer_to_db(
         session.commit()
 
     return True
+
+def get_beers_from_db() -> List[Beer]:
+    with get_session() as session:
+        sql = select(Beer) # SELECT * FROM beer;
+        return list(session.exec(sql))

@@ -1,5 +1,6 @@
 import typer
-from beerlog.core import add_beer_to_db
+from typing import Optional
+from beerlog.core import add_beer_to_db, get_beers_from_db
 
 main = typer.Typer(help="Beer management app")
 
@@ -18,6 +19,27 @@ def add(
 
 
 @main.command("list")
-def list_beers():
+def list_beers(style: Optional[str] = None):
     """Lists all beers in database"""
-    print(style)
+    beers = get_beers_from_db()
+    
+    print(
+        "ID" + " | " +
+        "Name" + " | " +
+        "Style" + " | " +
+        "Flavor" + " | " +
+        "Image" + " | " +
+        "Cost" + " | " +
+        "Rate"
+    )
+    for beer in beers:
+        print(
+            str(beer.id) + " | " +
+            beer.name + " | " + 
+            beer.style + " | " + 
+            str(beer.flavor) + " | " + 
+            str(beer.image) + " | " +  
+            str(beer.cost) + " | " +  
+            str(beer.rate)
+        )
+
