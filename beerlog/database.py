@@ -1,5 +1,5 @@
 import warnings
-from sqlalchemy.exec import SAWarning
+from sqlalchemy.exc import SAWarning
 from sqlmodel.sql.expression import Select, SelectOfScalar
 from sqlmodel import create_engine, Session
 from beerlog.config import settings
