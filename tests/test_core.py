@@ -6,3 +6,4 @@ def test_add_beer_to_db():
 def test_get_beers_from_db():
     results = get_beers_from_db()
     assert len(results) > 0
+
